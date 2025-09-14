@@ -50,7 +50,7 @@ This gives full flexibility and makes the system easy to manage remotely.
 ## Demo
 <p align="center">
   <img src="https://github.com/user-attachments/assets/cc9a33d3-ace7-4c69-aa76-523b4659701e" alt="Planetary Gearbox" width="30%"/>
-  <img src="https://github.com/user-attachments/assets/af963ba9-655c-4fcf-a348-8d5cc893c9a2" alt="Motor" width="50%"/>
+  <img src="https://github.com/user-attachments/assets/af963ba9-655c-4fcf-a348-8d5cc893c9a2" alt="Motor" width="55%"/>
 </p>
 
 
