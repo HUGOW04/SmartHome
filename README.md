@@ -51,10 +51,7 @@ This gives full flexibility and makes the system easy to manage remotely.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/cc9a33d3-ace7-4c69-aa76-523b4659701e" alt="Planetary Gearbox" width="30%"/>
   <img src="https://github.com/user-attachments/assets/af963ba9-655c-4fcf-a348-8d5cc893c9a2" alt="Motor" width="52%"/>
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5b6ac11b-9e64-4f91-8573-2422f959ebd0" alt="Webserver Interface" width="70%"/>
+   <img src="https://github.com/user-attachments/assets/5b6ac11b-9e64-4f91-8573-2422f959ebd0" alt="Webserver Interface" width="70%"/>
 </p>
 
 
