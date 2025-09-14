@@ -1,42 +1,60 @@
-# SmartHome
-<img src="https://github.com/user-attachments/assets/2e47d334-a87e-4aaa-b03e-e7bd6665ba10" width="400" height="400">
-<img src="https://github.com/user-attachments/assets/865ded09-db8c-4d5d-b11c-25256a82f9b3" width="400" height="400">
-<img src="https://github.com/user-attachments/assets/adb93e70-38a5-4d0a-8472-489fb85679d5" width="400" height="400">
-<img src="https://github.com/user-attachments/assets/a2984522-11ed-4d66-81f8-9d0860f8cc4d" width="400" height="400">
-
-
-# Smart Home Automation
+# Automated Blinds System
 
 ## Project Overview
-This project revolves around creating a **Smart Home** system that automates both blinds and lighting using a **NEMA 23 stepper motor** and a **Yeelight smart lamp**, all controlled by an **ESP32 microcontroller**. The system integrates WiFi-based automation, providing a smart environment where you can control the blinds and the lighting seamlessly. The blinds are powered by a motor enhanced with a **planetary gearbox**, and the Yeelight lamp is set to follow a specific schedule for a more convenient waking routine.
+This project is an automated blinds system powered by WiFi and a **NEMA 23 stepper motor** controlled by an **ESP32 microcontroller**.  
+Since the motor alone was too weak to lift the blinds, I integrated a **planetary gearbox**. The gearbox increases torque output by a factor of 4–5 using its design where one central *sun gear* is surrounded by four *planet gears*. This evenly distributes the load and provides the extra strength needed without requiring a larger, more power-hungry motor.  
+With this setup, the blinds move smoothly and reliably, even under load.
+
+---
+
+## Planetary Gearbox System
+- **Gear design:** Central sun gear with four planetary gears.  
+- **Purpose:** Torque amplification (4–5×).  
+- **Result:** Stable lifting of blinds with a relatively compact motor.  
+
+---
 
 ## How the System Works
-The **ESP32 microcontroller** is connected to a local WiFi network and handles automation for both the blinds and the Yeelight lamp. The system is synchronized with **NTP (Network Time Protocol)** to ensure time-based actions are precise.
+- **ESP32 control:** Connected to the local WiFi network.  
+- **Time synchronization:** Uses **NTP (Network Time Protocol)** for accurate scheduling.  
+- **Automatic schedule:**
+  - Opens blinds at **6 AM on weekdays**.  
+  - Opens blinds at **9 AM on weekends** (for a more relaxed start).  
+  - Closes blinds at **10 PM every night** for privacy and security.  
 
-- **Blinds Automation**: The blinds open automatically at **6 AM on weekdays** and at **9 AM on weekends**, and they close at **10 PM** every day to provide privacy and security.
-  
-- **Lamp Automation**: The Yeelight smart lamp automatically turns on at **6 AM on weekdays** and **9 AM on weekends**, simulating a natural sunrise to help you wake up gradually. The lamp will **automatically turn off after 1 hour** to ensure you aren't disturbed by the light for too long.
+---
 
-## Manual Control and "Sovmorgon" Feature
-The system includes **manual control** via physical buttons on the **ESP32**, allowing you to:
+## Manual Control and Sleep-In Mode
+Originally, the system relied on a second ESP32 with a display to send control signals.  
+This was replaced by a simpler, more flexible solution:  
 
-- Move the blinds up or down manually at any time.
-- Turn the Yeelight lamp on or off with a button press.
+- The main ESP32 now hosts its own **web server**.  
+- Features of the web interface:
+  - Manually open/close blinds.  
+  - Override scheduled operations (e.g., sleep in).  
+  - Force blinds to move at any chosen time.  
+  - Temporarily disable automation for specific days.  
 
-The **"Sovmorgon" (lie-in)** feature allows you to skip the scheduled automation for a day. By pressing a button, you can disable the automatic operation, so the blinds and lamp won't operate at their usual times, perfect for weekends or lazy mornings.
+This gives full flexibility and makes the system easy to manage remotely.
 
-## Key Features
-- **Planetary Gearbox for Blinds**: The blinds are operated with a stepper motor enhanced by a **planetary gearbox**, providing up to 4-5 times more torque, making the motor strong enough to move the blinds smoothly even under load.
-  
-- **Time Synchronization**: The system is synchronized with **NTP** to ensure that all automation happens at the correct time each day.
-  
-- **Manual Control**: Manual buttons let you control the blinds and Yeelight lamp, providing flexibility in scheduling and overriding automation.
+---
 
-- **Power Failure Recovery**: The system saves the last known position of the blinds using **EEPROM memory**, so after a power failure, the blinds will return to their correct position.
+## Experimental Setup
+- Tested multiple stepper motors to find the right balance of power and efficiency.  
+- Adjusted the gear tracks to perfectly fit the curtain setup.  
+- Iterative trial-and-error ensured smooth operation without motor overload.  
+- The final system achieves **reliable movement with minimal mechanical issues**.  
 
-- **Smart Wake-Up**: The Yeelight lamp turns on automatically at scheduled times (6 AM on weekdays and 9 AM on weekends) to simulate sunrise and help you wake up. The light will automatically turn off after **1 hour**, ensuring you're not disturbed by it for too long.
+---
 
-## Benefits
-- **Convenience**: Automation makes it easy to control your blinds and lighting based on time or preference.
-- **Customizable Wake-Up Routine**: The Yeelight lamp simulates sunrise, providing a gentle wake-up experience, and will automatically turn off after 1 hour for a comfortable morning.
-- **Manual Override**: Manual control via buttons allows you to bypass automation whenever you want.
+## Demo
+![planetarygear](https://github.com/user-attachments/assets/cc9a33d3-ace7-4c69-aa76-523b4659701e)
+![motor](https://github.com/user-attachments/assets/af963ba9-655c-4fcf-a348-8d5cc893c9a2)
+
+
+---
+
+## Future Improvements
+- Integration with smart home assistants (Google Home, Alexa).  
+- Light sensor input to adjust blinds dynamically.  
+- Mobile-friendly control dashboard.  
